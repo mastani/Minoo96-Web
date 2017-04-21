@@ -12,7 +12,7 @@ class Controller extends BaseController
         if (isset($_POST['login']))
             $this->Login();
 
-         parent::render();
+        parent::render();
     }
 
     public function Login()
@@ -34,8 +34,8 @@ class Controller extends BaseController
             if (empty($_POST['captcha']))
                 $error = true;
             if ($_POST['captcha'] != $_SESSION['captcha']) {
-                    $error = true;
-                    $captcha = true;
+                $error = true;
+                $captcha = true;
             }
         }
         $this->smarty->assign('captcha', $captcha);
@@ -56,23 +56,50 @@ class Controller extends BaseController
     }
 
 
-    public function dashboard(){
-      if(!empty($this->session->get('user_id'))){
-        $url = explode('/', $_GET['path']);
-        $url = $profile[2];
-        // get candidate information
-        $candidate = $this->model->getCandInfo($this->session->get('user_id'));
-        $this->smarty->assign('candidate', $candidate);
+    public function dashboard()
+    {
+        if (!empty($this->session->get('user_id'))) {
+            $url = explode('/', $_GET['path']);
+            $url = $url[2];
+            if (!isset($url))//for show posts in dashboard
+                $url = 'posts';
 
+
+            // get candidate information for sidebar
+            $candidate = $this->model->getCandInfo($this->session->get('user_id'));
+            $this->smarty->assign('candidate', $candidate);
+
+            switch ($url) {
+                case 'posts':
+                    $this->getposts();
+                    break;
+                case 'new':
+                    break;
+                case 'bio':
+                    break;
+                case 'setting':
+                    break;
+            }
+
+            parent::render('dashboard');
+        } else {
+            parent::render('404');
+        }
+    }
+
+    private function getposts()
+    {
         //get candidate posts for dashboard
         $posts = $this->model->getCandPosts($this->session->get('user_id'));
+
+        //set jalali time
+        Controller::loadLibrary('Jalali');
+        for($i=0;$i<count($posts);$i++)
+            $posts[$i]['time']=jdate('j F Y H:i:s', strtotime($posts[$i]['time']));
         $this->smarty->assign('posts', $posts);
 
-        parent::render('dashboard');
-      }
-      else {
-        parent::render('404');
-      }
-      }
+    }
 
-  }
+
+
+}

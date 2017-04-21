@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/Theme/CSS/cand_dashboard.css">
+<link rel="stylesheet" href="{$smarty.const.DEFAULT_PATH}/Theme/CSS/cand_dashboard.css">
 <div class="container">
     <div class="row profile">
 		<div class="col-md-2">
@@ -28,22 +28,22 @@
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="#">
+							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard">
 							<i class="glyphicon glyphicon-th"></i>
 							پیشخوان </a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/new">
 							<i class="glyphicon glyphicon-pencil"></i>
 							ارسال پست </a>
 						</li>
 						<li>
-							<a href="#" target="_blank">
+							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/bio" target="_blank">
 							<i class="glyphicon glyphicon-user"></i>
 							بیوگرافی و سوابق </a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/setting">
 							<i class="glyphicon glyphicon-list-alt"></i>
 							تنظیمات </a>
 						</li>

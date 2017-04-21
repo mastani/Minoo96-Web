@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/Theme/CSS/bootstrap_table.css">
+<link rel="stylesheet" href="{$smarty.const.DEFAULT_PATH}/Theme/CSS/bootstrap_table.css">
 
 {include file="./sidebar.tpl"}
 <div class="col-md-9">

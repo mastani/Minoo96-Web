@@ -18,7 +18,7 @@ class Model extends BaseModel
 
     public function getCandPosts($userid)//get candidate Posts
     {
-        return $this->query('SELECT p.id,title,content FROM posts p
+        return $this->query('SELECT p.id,title,content,time FROM posts p
           inner join candidates c on p.candidate_id=c.id
           inner join users u  on c.id=u.candidate_id
             WHERE u.id = ?', array('s', $userid));
