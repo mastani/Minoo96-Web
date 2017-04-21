@@ -1,7 +1,7 @@
 <?php
 defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
 
-const DEFAULT_PATH = '';
+const DEFAULT_PATH = '/Minoo96';
 
 const DB_SERVER   = 'localhost';
 const DB_NAME       = 'minoo96';
