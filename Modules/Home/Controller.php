@@ -42,6 +42,10 @@ class Controller extends BaseController
 
             $value['filter'] = $filter;
         }
+
+        // Shuffle candidate array for having equal chance to seen!
+        shuffle($candidates_array);
+
         $this->smarty->assign('candidates_array', $candidates_array);
 
         parent::render();
