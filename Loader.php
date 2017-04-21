@@ -45,6 +45,11 @@ switch ($page) {
             $command = 'dashboard';
         }
         break;
+    case 'News':
+        if (isset($path[2]) && !empty($path[2])) {
+            $command = $path[2];
+        }
+        break;
     default:
         if (isset($path[1]) && !empty($path[1])) {
             $command = $path[1];
