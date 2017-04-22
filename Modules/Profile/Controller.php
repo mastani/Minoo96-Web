@@ -24,12 +24,4 @@ class Controller extends BaseController
         $this->smarty->assign('default_path', DEFAULT_PATH);
         parent::render();
     }
-
-    public function loadComment()
-    {
-        $profile = explode('/', $_GET['path']);
-        $profile = $profile[1];
-
-        echo $profile;
-    }
 }

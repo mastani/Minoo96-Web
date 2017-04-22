@@ -16,7 +16,7 @@
         {foreach from=$candidates_array item=candidate}
             <div class="candidate_item col-xs-6 col-sm-4 col-md-4 col-lg-2 filter {$candidate.filter}">
                 <a href="Profile/{$candidate.profile_name}">
-                    <img width="150" src="{$candidate.image}">
+                    <img class="candidate_image" width="150" src="{$candidate.image}">
                     <br/>
                     <p><strong>{$candidate.name}</strong></p>
                 </a>
@@ -26,26 +26,25 @@
 </div>
 
 <div class="container">
-    <div class="row" id="News">
-        <br/><br/>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3 class="gallery-title">آخرین اخبار انتخابات</h3>
-        </div>
-        <br/><br/><br/><br/><br/>
-        {foreach from=$news_array item=news}
-            <div class="news">
-                <div class="title">
-                    <span class="fa fa-newspaper-o"></span>
-                    {$news.title}
-                    <span class="time">{$news.time}</span>
-                </div>
-                <div class="separator"></div>
-                <div class="content">
-                    <img class="news_image" src="{$news.image}"/>
-                    <br/>
-                    {$news.content}
-                </div>
-            </div>
-        {/foreach}
+    <br/><br/>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="gallery-title">آخرین اخبار انتخابات</h3>
     </div>
+    <br/><br/><br/><br/><br/>
+
+    {foreach from=$news_array item=news}
+        <div class="col-md-6 news">
+            <div class="title">
+                <span class="fa fa-newspaper-o"></span>
+                {$news.title}
+                <span class="time">{$news.time}</span>
+            </div>
+            <div class="separator"></div>
+            <div class="content">
+                <img class="news_image full" src="{$news.image}"/>
+                <br/>
+                {$news.content}
+            </div>
+        </div>
+    {/foreach}
 </div>

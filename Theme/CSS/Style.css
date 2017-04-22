@@ -224,6 +224,11 @@ a {
 .news_image {
     display: block;
     margin: 0 auto;
+    max-width: 100%;
+}
+
+.full {
+    width: 100%;
 }
 
 .news {
@@ -266,7 +271,7 @@ a {
 
 }
 
-.hidden {
+.hidden-content {
     display: none;
 }
 
@@ -323,6 +328,10 @@ a {
     width: 150px;
     color: black;
     margin-top: 4px;
+}
+
+.candidate_image {
+    max-width: 100%;
 }
 
 .bio {

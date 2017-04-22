@@ -19,8 +19,8 @@
             <h2>بیوگرافی</h2>
             <p class="long">{$candidate.bio}</p>
             <hr/>
-            <p><a class="show">مشاهده سوابق کاری و ایده های کاندید برای مینودشت</a></p>
-            <div class="hidden">
+            <p><a class="show-content">مشاهده سوابق کاری و ایده های کاندید برای مینودشت</a></p>
+            <div class="hidden-content">
                 <h2>سوابق کاری</h2>
                 <p class="long">{$candidate.savabegh}</p>
                 <hr/>
@@ -79,7 +79,8 @@
                     $(".comments-area-" + pid).html(html);
                 });
     });
-    $(".show").click(function () {
-        $(".hidden").css("display", "block");
+    $(".show-content").click(function () {
+        $(".hidden-content").css("display", "block");
+        $(".show-content").css("display", "none");
     });
 </script>

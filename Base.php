@@ -1,48 +1,60 @@
 <?php
 defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
 
-class BaseController {
+// Base controller reperesent necessary objects and libraries
+class BaseController
+{
     static $page;
     var $smarty;
     var $session;
     var $model;
     var $config;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->smarty = new Smarty;
         $this->session = new Sessions();
         $this->model = NULL;
         $this->config = NULL;
 
-        if( file_exists('Modules/'.self::$page.'/Model.php') ) {
-            require 'Modules/'.self::$page.'/Model.php';
+        // Load module model
+        if (file_exists('Modules/' . self::$page . '/Model.php')) {
+            require 'Modules/' . self::$page . '/Model.php';
             $this->model = new Model();
         }
 
-        if( file_exists('Modules/'.self::$page.'/Config.php') ) {
-            require 'Modules/'.self::$page.'/Config.php';
+        // Some modules may have specific config, so we must load it
+        if (file_exists('Modules/' . self::$page . '/Config.php')) {
+            require 'Modules/' . self::$page . '/Config.php';
             $this->config = new Config();
         }
     }
 
-    public function render($view = 'View') {
-        $this->smarty->display('Modules/'.self::$page.'/'.$view.'.tpl');
+    // Pass the view to Smarty
+    // Default view is "View"
+    // Some modules may have several view's, We can pass different view on different conditions
+    public function render($view = 'View')
+    {
+        $this->smarty->display('Modules/' . self::$page . '/' . $view . '.tpl');
     }
 
-    public function hasPermission($permission) {
-        switch($permission) {
+    // Check current user has permission
+    // Return boolean
+    public function hasPermission($permission)
+    {
+        switch ($permission) {
             case 'admin':
 
                 break;
             case 'user':
-                if( $this->session->get('user_id') ) {
+                if ($this->session->get('user_id')) {
                     return true;
                 } else {
                     return false;
                 }
                 break;
             case 'guest':
-                if( $this->session->get('user_id') ) {
+                if ($this->session->get('user_id')) {
                     return false;
                 } else {
                     return true;
@@ -51,7 +63,8 @@ class BaseController {
         }
     }
 
-    public static function loadLibrary($library) {
+    public static function loadLibrary($library)
+    {
         switch ($library) {
             case 'Jalali':
                 require 'Libraries/Jalali/jdf.php';
@@ -60,14 +73,18 @@ class BaseController {
     }
 }
 
-class BaseModel {
+// Base model reperesent db connection and query functions
+class BaseModel
+{
     var $db;
 
-    public function __construct() {
+    public function __construct()
+    {
 
     }
 
-    private function prepare_database() {
+    private function prepare_database()
+    {
         if (isset($this->db)) return;
 
         $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -81,19 +98,20 @@ class BaseModel {
         $this->db->set_charset("utf8");
     }
 
-    public function query($sql, $params = array(), $execution_result = false) {
+    public function query($sql, $params = array(), $execution_result = false)
+    {
         $this->prepare_database();
         $stmt = $this->db->prepare($sql);
 
-        if( count($params) > 0 ) {
+        if (count($params) > 0) {
             $tmp = array();
-            foreach($params as $key => $value) $tmp[$key] = &$params[$key];
+            foreach ($params as $key => $value) $tmp[$key] = &$params[$key];
             call_user_func_array(array($stmt, 'bind_param'), $tmp);
         }
 
         $exe_res = $stmt->execute();
 
-        if($execution_result) {
+        if ($execution_result) {
             $stmt->close();
             return $exe_res;
         }
@@ -113,16 +131,17 @@ class BaseModel {
         return $a_data;
     }
 
-    function get_result( $Statement ) {
+    function get_result($Statement)
+    {
         $RESULT = array();
         $Statement->store_result();
-        for ( $i = 0; $i < $Statement->num_rows; $i++ ) {
+        for ($i = 0; $i < $Statement->num_rows; $i++) {
             $Metadata = $Statement->result_metadata();
             $PARAMS = array();
-            while ( $Field = $Metadata->fetch_field() ) {
-                $PARAMS[] = &$RESULT[ $i ][ $Field->name ];
+            while ($Field = $Metadata->fetch_field()) {
+                $PARAMS[] = &$RESULT[$i][$Field->name];
             }
-            call_user_func_array( array( $Statement, 'bind_result' ), $PARAMS );
+            call_user_func_array(array($Statement, 'bind_result'), $PARAMS);
             $Statement->fetch();
         }
         return $RESULT;
@@ -137,8 +156,9 @@ class BaseModel {
     }
 }
 
-function getAddress() {
-    return 'http://'.$_SERVER['HTTP_HOST'].DEFAULT_PATH;
+function getAddress()
+{
+    return 'http://' . $_SERVER['HTTP_HOST'] . DEFAULT_PATH;
 }
 
 function get_user_ip()
