@@ -11,7 +11,7 @@
          {include file="./newpost.tpl"}
      {elseif $url == 'bio'}
          {include file="./bio.tpl"}
-     {elseif $url == 'posts'}
+     {elseif $url == 'setting'}
          {include file="./setting.tpl"}
      {/if}
 <!-- below tags for sidebar -->
