@@ -14,26 +14,26 @@ defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
             <div class="col-sm-2">
                 <h5>صفحات سایت</h5>
                 <ul>
-                    <li><a href="#">صفحه اصلی</a></li>
-                    <li><a href="#">آخرین اخبار</a></li>
-                    <li><a href="#">دانلود اپلیکیشن</a></li>
+                    <li><a href="Home">صفحه اصلی</a></li>
+                    <li><a href="News">آخرین اخبار</a></li>
+                    <li><a href="App">دانلود اپلیکیشن</a></li>
                 </ul>
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
                 <h5>درباره ما</h5>
                 <ul>
-                    <li><a href="#">اهداف مینو 96</a></li>
-                    <li><a href="#">تماس با ما</a></li>
-                    <li><a href="#">کانال تلگرام</a></li>
+                    <li><a href="Goals">اهداف مینو 96</a></li>
+                    <li><a href="ContactUs">تماس با ما</a></li>
+                    <li><a href="https://telegram.me/minoo96">کانال تلگرام</a></li>
                 </ul>
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
                 <h5>پشتیبانی</h5>
                 <ul>
-                    <li><a href="#">سوالات متداول</a></li>
-                    <li><a href="#">پشتیبانی تلگرام</a></li>
+                    <li><a href="FAQ">سوالات متداول</a></li>
+                    <li><a href="https://telegram.me/minoo96">پشتیبانی تلگرام</a></li>
                 </ul>
             </div>
         </div>

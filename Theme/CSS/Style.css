@@ -321,11 +321,11 @@ a {
 
 .candidate_item {
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .candidate_item p {
     text-align: center;
-    width: 150px;
     color: black;
     margin-top: 4px;
 }
