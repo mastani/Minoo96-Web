@@ -64,6 +64,7 @@ class Controller extends BaseController
             if (!isset($url))//for show posts in dashboard
                 $url = 'posts';
 
+            $this->smarty->assign('url', $url);
 
             // get candidate information for sidebar
             $candidate = $this->model->getCandInfo($this->session->get('user_id'));
@@ -74,6 +75,7 @@ class Controller extends BaseController
                     $this->getposts();
                     break;
                 case 'new':
+                    $this->createpost();
                     break;
                 case 'bio':
                     break;
@@ -100,6 +102,9 @@ class Controller extends BaseController
 
     }
 
+    private function createpost()
+    {
 
+    }
 
 }

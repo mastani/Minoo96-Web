@@ -27,22 +27,22 @@
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
-						<li class="active">
+						<li {if $url == 'posts'} class="active"{/if}>
 							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard">
 							<i class="glyphicon glyphicon-th"></i>
 							پیشخوان </a>
 						</li>
-						<li>
+						<li {if $url == 'new'} class="active"{/if}>
 							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/new">
 							<i class="glyphicon glyphicon-pencil"></i>
 							ارسال پست </a>
 						</li>
-						<li>
-							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/bio" target="_blank">
+						<li {if $url == 'bio'} class="active"{/if}>
+							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/bio">
 							<i class="glyphicon glyphicon-user"></i>
 							بیوگرافی و سوابق </a>
 						</li>
-						<li>
+						<li {if $url == 'setting'} class="active"{/if}>
 							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/setting">
 							<i class="glyphicon glyphicon-list-alt"></i>
 							تنظیمات </a>
