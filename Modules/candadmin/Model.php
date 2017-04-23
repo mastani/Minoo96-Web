@@ -23,4 +23,20 @@ class Model extends BaseModel
           inner join users u  on c.id=u.candidate_id
             WHERE u.id = ?', array('s', $userid));
     }
+
+    public function deletePost($postid)
+    {
+        return $this->query('delete from posts where id = ?', array('s', $postid), true);
+    }
+
+    public function savePost($userid, $title, $body, $image)
+    {
+        $now = date('Y-m-d H:i:s');
+        $candid = $this->query('SELECT candidate_id FROM users where id = ?', array('s', $userid));
+        $candid =$candid[0]['candidate_id'];
+
+        return $this->query('INSERT INTO posts (candidate_id, image, title, content, time) VALUES(?,?,?,?,?)',
+                      array('sssss', $candid, $image, $title, $body, $now),
+                      true);
+    }
 }

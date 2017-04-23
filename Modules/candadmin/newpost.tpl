@@ -1,10 +1,10 @@
-<form id="form" method="post" action="" class="form form-horizontal col-md-12">
+<form id="form" method="post" action="" class="form form-horizontal col-md-12" enctype="multipart/form-data">
     <h2>پست جدید</h2>
     <hr class="colorgraph">
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label">عنوان پست</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" name="name" required>
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
         </div>
         <div class="form-group">

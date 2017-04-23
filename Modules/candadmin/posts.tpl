@@ -6,7 +6,7 @@
                 <h3 class="panel-title">پست های ارسال شده</h3>
             </div>
             <div class="col col-xs-6 text-left">
-                <button type="button" class="btn btn-sm btn-primary btn-create">ارسال پست جدید</button>
+                <a class="btn btn-sm btn-primary btn-create" href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/new">ارسال پست جدید</a>
             </div>
         </div>
     </div>
