@@ -2,28 +2,26 @@
     <br/><br/>
 
     <div class="row">
-        <div class="col-md-4 pull-left">
-            <img width="200" src="{$candidate.image}">
+        <div class="col-md-4 pull-left sid-left">
 
-            <h2>اطلاعات پایه</h2>
+            <h2 class="sid-left-h">اطلاعات نامزد</h2>
             <br/>
-            <p><strong>نام و نام خانوادگی:</strong> {$candidate.name}</p>
-            <p><strong>نام پدر:</strong> {$candidate.father_name}</p>
-            <p><strong>سن:</strong> {$candidate.age}</p>
-            <p><strong>گرایش سیاسی:</strong> {$candidate.hezb}</p>
-            <p><strong>تحصیلات:</strong> {$candidate.tahsilat}</p>
-            <p><strong>رشته تحصیلی:</strong> {$candidate.reshteh}</p>
-            <p><strong>تاریخ ثبت نام:</strong> {$candidate.register_date}</p>
+            <img width="180" src="{$candidate.image}" class="sid-left-img">
+            <p class="sid-left-pa"><strong>نام و نام خانوادگی:</strong> {$candidate.name}</p>
+            <p class="sid-left-pa"><strong>نام پدر:</strong> {$candidate.father_name}</p>
+            <p class="sid-left-pa"><strong>سن:</strong> {$candidate.age}</p>
+            <p class="sid-left-pa"><strong>گرایش سیاسی:</strong> {$candidate.hezb}</p>
+            <p class="sid-left-pa"><strong>تحصیلات:</strong> {$candidate.tahsilat}</p>
+            <p class="sid-left-pa"><strong>رشته تحصیلی:</strong> {$candidate.reshteh}</p>
+            <p class="sid-left-pa"><strong>تاریخ ثبت نام:</strong> {$candidate.register_date}</p>
 
-            <hr/>
-            <h2>بیوگرافی</h2>
+            <h2 class="sid-left-h">بیوگرافی</h2>
             <p class="long">{$candidate.bio}</p>
             <hr/>
             <p><a class="show-content">مشاهده سوابق کاری و ایده های کاندید برای مینودشت</a></p>
             <div class="hidden-content">
                 <h2>سوابق کاری</h2>
                 <p class="long">{$candidate.savabegh}</p>
-                <hr/>
                 <h2>ایده ها برای شهری بهتر</h2>
                 <p class="long">{$candidate.idea}</p>
                 <hr/>
@@ -34,15 +32,14 @@
                 <p>&nbsp;&nbsp;&nbsp;<i class="fa fa-telegram"></i><a href="{$candidate.tchannel}">کانال تلگرام </a></p>
             </div>
         </div>
-
         <div class="col-md-8">
-            <h3>آخرین پست های <b>{$candidate.name}</b></h3>
+            <h3 class="sid-right-h">آخرین پست های <b>{$candidate.name}</b></h3>
             <br/>
 
             {foreach from=$posts item=post}
                 <div class="post">
                     <div class="separator"></div>
-                    <div class="content">
+                    <div class="content c-shadow">
                         <img class="news_image" src="{$post.image}"/>
                         <p>{$post.content}</p>
                         <br/>

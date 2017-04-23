@@ -321,11 +321,11 @@ a {
 
 .candidate_item {
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .candidate_item p {
     text-align: center;
-    width: 150px;
     color: black;
     margin-top: 4px;
 }
@@ -344,6 +344,71 @@ a {
 
 .long {
     text-indent: 30px;
+    text-align: justify;
+    padding: 0 10px;
+}
+
+.sid-left {
+    border-right: 5px solid #542721;
+    background-color: #e0e0e0;
+}
+
+.sid-left-img {
+    background-color: #227bd4;
+    border: 5px solid #4f4dc3;
+    border-radius: 100px;
+    border-bottom: 5px solid #ffffff;
+    position: absolute;
+    left: 15px;
+}
+
+.sid-left-h {
+    background-color: #81c5ff;
+    border-left: 5px solid #4f4dc3;
+    padding: 5px 10px 5px 0;
+    font-size: 26px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.sid-left-pa {
+    font-size: 12px;
+}
+
+.sid-right-h {
+    background-color: #4caf5099;
+    border-right: 5px solid #107714;
+    padding: 5px 10px 5px 0;
+    font-size: 25px;
+    margin-bottom: -5px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.c-shadow {
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.show {
+    border-right: 5px solid #ff3636;
+    padding-right: 5px;
+    margin-right: 10px;
+}
+
+.inline-with-icon {
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 0 10px 10px;
+    margin-right: 20px;
+}
+
+.text-big {
+    font-size: 50px;
+    padding-right: 5px;
 }
 
 #myFooter {
