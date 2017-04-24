@@ -120,7 +120,7 @@ class Controller extends BaseController
             if(!isset($msg))//insert new post
             {
                 //check image
-                $target_dir = DEFAULT_PATH."/images/";
+                $target_dir = dirname(dirname(__dir__))."/images/";
                 $file_name = md5($this->session->get('user_id').date('Y-m-d H:i:s'));
                 $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
                 $target_file = $target_dir . $file_name .'.'. $extension;
@@ -136,10 +136,10 @@ class Controller extends BaseController
                     $msg[] = 'حجم تصویر انتخابی باید کوچکتر از یک مگابایت باشد';
                     $uploadOk = 0;
                 }
-echo $_FILES["image"]["tmp_name"];
+
                 if ($uploadOk == 1) {
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-                        if ($this->model->savePost($this->session->get('user_id'),$_POST['title'],$_POST['body'],$_POST['image']))
+                        if ($this->model->savePost($this->session->get('user_id'),$_POST['title'],$_POST['body'],$file_name .'.'. $extension))
                             $msg = 'پست با موفقیت ذخیره شد';
                     } else {
                         $msg[] = 'مشکل در آپلود تصویر';
