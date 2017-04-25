@@ -332,6 +332,8 @@ a {
 
 .candidate_image {
     max-width: 100%;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .bio {
