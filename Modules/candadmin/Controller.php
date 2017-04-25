@@ -77,7 +77,8 @@ class Controller extends BaseController
                 case 'new':
                     $this->createpost();
                     break;
-                case 'bio':
+                case 'edit':
+                    $this->showorsavepost();
                     break;
                 case 'setting':
                     $this->savesetting();
@@ -168,8 +169,72 @@ class Controller extends BaseController
                    $msg[] = 'مشکل در ذخیره سازی تغییرات';
             }
             $this->smarty->assign('msg', $msg);
-
         }
     }
 
+    private function showorsavepost(){
+
+        if(isset($_POST['title'])){
+            if(empty($_POST['title']))
+                $msg[0] = 'عنوان پست را وارد کنید';
+            if(empty($_POST['body']))
+                $msg[] = 'متن پست را وارد کنید';
+
+            if(!isset($msg))//insert new post
+            {
+                $uploadOk = 1;
+                $file_name = '';
+
+                if (!empty($_FILES["image"])){
+                    //check image
+                    $target_dir = dirname(dirname(__dir__))."/images/";
+                    $file_name = md5($this->session->get('user_id').date('Y-m-d H:i:s'));
+                    $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+                    $target_file = $target_dir . $file_name .'.'. $extension;
+                    //Check if image file is a actual image or fake image
+                    if(isset($_POST["submit"])) {
+                        $check = getimagesize($_FILES["image"]["tmp_name"]);
+                        if($check === false) {
+                            $msg[]= "فایل تصویر درست انتخاب نشده است";
+                            $uploadOk = 0;
+                        }
+                    }else if ($_FILES["image"]["size"] > 500000) {
+                        $msg[] = 'حجم تصویر انتخابی باید کوچکتر از یک مگابایت باشد';
+                        $uploadOk = 0;
+                    }
+
+                    if ($uploadOk == 1) {
+                        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                            $file_name = $file_name .'.'. $extension;
+                            $uploadOk = 1;
+                            unlink($_POST['oldimage'] );//delete old image
+                        }
+                         else {
+                            $msg[] = 'مشکل در آپلود تصویر';
+                            $uploadOk = 0;
+                        }
+                    }
+                }
+                if ($uploadOk)
+                    if ($this->model->saveEditPost($_POST['postid'], $this->session->get('user_id'),$_POST['title'],$_POST['body'],$file_name)) {
+                        $msg = 'پست با موفقیت ذخیره شد';
+                        $redirect = 'dashboard';
+                        $this->smarty->assign('redirect', $redirect);
+                    }
+                    else
+                        $msg[] = 'تغییرات ذخیره نشد';
+
+
+                $this->smarty->assign('msg', $msg);
+            
+            }
+        }
+        else{
+            $postid = $_POST['postid'];
+            $post = $this->model->getPostinfo($postid);
+            $post = $post[0];
+            $this->smarty->assign('post', $post);
+        }
+
+}
 }

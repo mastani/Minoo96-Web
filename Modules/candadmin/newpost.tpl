@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="human" class="col-sm-2 control-label">تصویر ضمیمه</label>
+            <label for="image" class="col-sm-2 control-label">تصویر ضمیمه</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control"  name="image">
             </div>

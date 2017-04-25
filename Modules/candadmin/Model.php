@@ -48,4 +48,26 @@ class Model extends BaseModel
         return $this->query('update users set password = ? where id = ? and password = ?',array('sss',$newpass, $userid, $oldpass), true);
 
     }
+
+    public function getPostinfo($postid)
+    {
+        return $this->query('select id,title,content,image from posts where id = ?', array('s',$postid));
+    }
+
+    public function saveEditPost($postid, $userid, $title, $body, $image)
+    {
+        $candid = $this->query('SELECT candidate_id FROM users where id = ?', array('s', $userid));
+        $candid = $candid[0]['candidate_id'];
+
+        if(!empty($image)) {
+            return $this->query('update posts set title = ?, content = ?, image = ? where id = ? and candidate_id = ?',
+                array('sssss', $title, $body, $image, $postid, $candid),
+                true);
+        }
+        else{
+            return $this->query('update posts set title = ?, content = ? where id = ? and candidate_id = ?',
+                array('ssss', $title, $body, $postid, $candid),
+                true);
+        }
+    }
 }

@@ -25,7 +25,7 @@
                     <td>{$v.title}</td>
                     <td>{$v.time}</td>
                     <td align="center" id="{$v.id}" onclick="setid(this.id)">
-                        <a class="btn btn-default"  onclick="sendpostid('edit')"><em class="fa fa-pencil"></em></a>
+                        <a class="btn btn-default"  onclick="sendpostid('edit',this.parentNode.id)"><em class="fa fa-pencil"></em></a>
                         <a class="btn btn-danger confirm"><em class="fa fa-trash"></em></a>
                     </td>
                 </tr>
@@ -78,9 +78,12 @@
         $('#postid').val(id);
     }
 
-    function sendpostid(operation) {
-        if(operation == 'edit')
-            $('#form1').attr('action','{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/new');
+    function sendpostid(operation, id) {
+
+        if(operation == 'edit') {
+            $('#form1').attr('action', '{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/edit');
+            $('#postid').val(id);
+        }
         $('#form1').submit();
     }
 </script>

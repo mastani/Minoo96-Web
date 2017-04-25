@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="{$smarty.const.DEFAULT_PATH}/Theme/CSS/bootstrap_table.css">
-
+{if (isset($redirect))}
+    <script>setTimeout("window.location = '{$smarty.const.DEFAULT_PATH}/candadmin/{$redirect}'", 500);</script>
+{/if}
 {include file="./sidebar.tpl"}
 <div class="col-md-9">
   <div class="profile-content">
@@ -15,15 +17,15 @@
          {include file="./posts.tpl"}
      {elseif $url == 'new'}
          {include file="./newpost.tpl"}
-     {elseif $url == 'bio'}
-         {include file="./bio.tpl"}
+     {elseif $url == 'edit'}
+         {include file="./editpost.tpl"}
      {elseif $url == 'setting'}
          {include file="./setting.tpl"}
      {/if}
 <!-- below tags for sidebar -->
 
         <script>
-            $('#message').delay(3000).fadeOut();
+            $('#message').delay(5000).fadeOut();
         </script>
     </div>
   </div>
