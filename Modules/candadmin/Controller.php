@@ -80,6 +80,7 @@ class Controller extends BaseController
                 case 'bio':
                     break;
                 case 'setting':
+                    $this->savesetting();
                     break;
             }
 
@@ -111,7 +112,7 @@ class Controller extends BaseController
 
     private function createpost()
     {
-        if (isset($_POST['title'])){
+        if (isset($_POST['title'])){//save new post
             if(empty($_POST['title']))
                 $msg[0] = 'عنوان پست را وارد کنید';
             if(empty($_POST['body']))
@@ -148,6 +149,26 @@ class Controller extends BaseController
             }
 
             $this->smarty->assign('msg', $msg);
+        }
+    }
+
+    private function savesetting()
+    {
+        if (isset($_POST['newpass1'])) {//save setting
+            if (strlen($_POST['newpass1'])<4)
+                $msg[0] = 'کلمه عبور باید شامل حداقل ۴ کاراکتر باشد';
+            if (($_POST['newpass1']) != ($_POST['newpass2']))
+                $msg[] = 'کلمه عبور جدید و تکرار آن برابر نیستند';
+
+            if (!isset($msg))//insert new post
+            {
+               if ($this->model->saveSetting($_POST['oldpass'], $_POST['newpass1'],$this->session->get('user_id')))
+                   $msg[] = 'تغییرات با موفقیت ذخیره شد';
+               else
+                   $msg[] = 'مشکل در ذخیره سازی تغییرات';
+            }
+            $this->smarty->assign('msg', $msg);
+
         }
     }
 

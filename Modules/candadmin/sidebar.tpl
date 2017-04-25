@@ -19,10 +19,10 @@
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
-				<!-- <div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div> -->
+				 <div class="profile-userbuttons">
+				<!--	<button type="button" class="btn btn-success btn-sm">Follow</button>-->
+					<button type="button" class="btn btn-danger btn-sm">خروج</button>
+				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
@@ -37,11 +37,11 @@
 							<i class="glyphicon glyphicon-pencil"></i>
 							ارسال پست </a>
 						</li>
-						<li {if $url == 'bio'} class="active"{/if}>
-							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/bio">
-							<i class="glyphicon glyphicon-user"></i>
-							بیوگرافی و سوابق </a>
-						</li>
+						{*<li {if $url == 'bio'} class="active"{/if}>*}
+							{*<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/bio">*}
+							{*<i class="glyphicon glyphicon-user"></i>*}
+							{*بیوگرافی و سوابق </a>*}
+						{*</li>*}
 						<li {if $url == 'setting'} class="active"{/if}>
 							<a href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/setting">
 							<i class="glyphicon glyphicon-list-alt"></i>

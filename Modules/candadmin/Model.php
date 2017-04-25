@@ -39,4 +39,13 @@ class Model extends BaseModel
                       array('sssss', $candid, $image, $title, $body, $now),
                       true);
     }
+
+    public function saveSetting($oldpass,$newpass,$userid)
+    {
+        $newpass = sha1($newpass);
+        $oldpass = sha1($oldpass);
+
+        return $this->query('update users set password = ? where id = ? and password = ?',array('sss',$newpass, $userid, $oldpass), true);
+
+    }
 }
