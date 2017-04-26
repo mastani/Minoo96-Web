@@ -5,6 +5,9 @@ class Controller extends BaseController
 
     public function index()
     {
+        if (isset($_GET['logout']))
+            $this->session->destroy();
+
         Controller::loadLibrary('Jalali');
 
         $news_array = $this->model->get_news(10);

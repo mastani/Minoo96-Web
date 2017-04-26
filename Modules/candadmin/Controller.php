@@ -207,7 +207,9 @@ class Controller extends BaseController
                         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                             $file_name = $file_name .'.'. $extension;
                             $uploadOk = 1;
-                            unlink($_POST['oldimage'] );//delete old image
+                            $oldPicture = dirname(dirname(__DIR__)).'/images/'.$_POST['oldimage'];
+                            chmod($oldPicture, 0644);
+                            unlink($oldPicture);
                         }
                          else {
                             $msg[] = 'مشکل در آپلود تصویر';

@@ -71,3 +71,5 @@ $controller = new Controller();
 require 'Theme/Header.php';
 require 'Theme/Body.php';
 require 'Theme/Footer.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);

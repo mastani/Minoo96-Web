@@ -31,7 +31,7 @@
     {/if}
 
     <input id="postid" name="postid" type="hidden" value="{$post.id}">
-    <input id="oldimage" name="oldimage" type="hidden" value="{$smarty.const.DEFAULT_PATH}/images/{$post.image}">
+    <input id="oldimage" name="oldimage" type="hidden" value="{$post.image}">
 
 
     <div class="form-group">

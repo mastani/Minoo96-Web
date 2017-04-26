@@ -26,4 +26,9 @@ class Sessions extends BaseModel {
         }
     }
 
+    public function destroy()
+    {
+        session_destroy();
+    }
+
 }
