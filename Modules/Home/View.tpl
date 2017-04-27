@@ -14,7 +14,7 @@
 
     <div class="row">
         {foreach from=$candidates_array item=candidate}
-            <div class="candidate_item col-xs-6 col-sm-4 col-md-4 col-lg-2 filter {$candidate.filter}">
+            <div class="candidate_item col-xs-6 col-sm-4 col-md-3 col-lg-2 filter {$candidate.filter}">
                 <a href="Profile/{$candidate.profile_name}">
                     <img class="candidate_image" src="{$candidate.image}">
                     <br/>

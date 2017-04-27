@@ -3,7 +3,7 @@
         <div class="col-md-1"></div>
         <form id="form" method="post" action="" class="form form-horizontal col-md-10" enctype="multipart/form-data">
             <h2>
-                <small>ضمن عرض سلام و آرزوی موفقیت برای شما کاندید گرامی. لطفا اطلاعات فرم زیر را به دقت
+                <small>ضمن عرض سلام و آرزوی موفقیت برای شما کاندیدای گرامی. لطفا اطلاعات فرم زیر را به دقت
                     تکمیل نمایید.
                 </small>
             </h2>
