@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Controller extends BaseController
 {
@@ -18,9 +18,9 @@ class Controller extends BaseController
 
             // limit news content size
             $string = strip_tags($value['content']);
-            if (strlen($string) > 500) {
+            if (strlen($string) > 490) {
                 // truncate string
-                $stringCut = substr($string, 0, 500);
+                $stringCut = substr($string, 0, 490);
                 // make sure it ends in a word so assassinate doesn't become ass...
                 $string = substr($stringCut, 0, strrpos($stringCut, ' ')) . " ... <a href='News/$news_id'>مشاهده متن کامل خبر</a>";
             }
