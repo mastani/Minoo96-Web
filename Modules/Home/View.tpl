@@ -36,13 +36,13 @@
             <div class="title">
                 <span class="fa fa-newspaper-o"></span>
                 {$news.title}
-                <span class="time">{$news.time}</span>
             </div>
             <div class="separator"></div>
             <div class="content">
                 <img class="news_image full" src="{$news.image}"/>
                 <br/>
-                {$news.content}
+                <p class="more-post">{$news.content}</p>
+                <span class="time">{$news.time}</span>
             </div>
         </div>
     {/foreach}

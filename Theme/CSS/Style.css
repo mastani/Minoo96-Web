@@ -224,7 +224,7 @@ a {
 .news_image {
     display: block;
     margin: 0 auto;
-    max-width: 50%;
+    max-width: 250px;
     float: left;
     margin-right: 15px;
 }
@@ -235,6 +235,14 @@ a {
 
 .news {
     margin-bottom: 20px;
+}
+
+.more-post {
+    
+    padding-top: 18px;
+    
+    padding-bottom: 8px;
+
 }
 
 .title {
