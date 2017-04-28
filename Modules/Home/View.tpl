@@ -1,4 +1,4 @@
-<div class="container" id="Candidates">
+﻿<div class="container" id="Candidates">
 
     <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h3 class="gallery-title">لیست نامزدهای انتخاباتی شهرستان مینودشت در سال 96</h3>
@@ -8,7 +8,6 @@
         <button class="btn btn-default filter-button active" data-filter="all">همه ی نامزد ها</button>
         <button class="btn btn-default filter-button" data-filter="gentleman">آقایان</button>
         <button class="btn btn-default filter-button" data-filter="ladies">خانم ها</button>
-        <button class="btn btn-default filter-button" data-filter="youngest">جوان ترین ها</button>
         <button class="btn btn-default filter-button" data-filter="recandidate">شورا های سابق</button>
     </div>
 
