@@ -218,14 +218,15 @@ a {
 }
 
 .separator {
-    background-color: #4CAF50;
-    height: 4px;
+
 }
 
 .news_image {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 50%;
+    float: left;
+    margin-right: 15px;
 }
 
 .full {
@@ -241,18 +242,22 @@ a {
     padding-bottom: 8px;
     padding-right: 12px;
     color: white;
-    background-color: #333;
+    background-color: #00bfff;
 }
 
 .content {
-    padding: 10px 20px 10px 10px;
     line-height: 30px;
     background-color: #eee;
+    padding-right: 10px;
+    text-align: justify;
 }
 
 .time {
     float: left;
     padding-left: 15px;
+    background-color: #006e93;
+    color: #fff;
+    padding-right: 15px;
 }
 
 .post {
