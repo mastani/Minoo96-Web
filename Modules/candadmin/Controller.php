@@ -18,6 +18,7 @@ class Controller extends BaseController
     public function Login()
     {
         $error = false;
+        $captcha = false;
 
         if (!isset($_POST['mobile-email']) ||
             !isset($_POST['password']) ||

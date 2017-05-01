@@ -10,7 +10,7 @@
           <div class="alert alert-info">
             {if $login_cand == 'success'}
             <h5>ورود با موفقیت انجام شد. در حال انتقال به پنل کاربری ...</h5>
-            <script>setTimeout("window.location = 'candadmin/dashboard'", 2500);</script>
+            <script>setTimeout("window.location.assign('candadmin/dashboard');", 2500);</script>
             {/if}
             {if $login_cand == 'fail'}
             <h5>اطلاعات وارد شده صحیح نمی باشد.</h5>
@@ -36,13 +36,18 @@
         </div>
       </div>
       <div class="form-group">
-          <div class="col-md-6 col-xs-6">
+          <div class="col-md-12 col-xs-12">
               <input type="text" class="form-control" name="captcha" id="captcha"
-                     placeholder="کد روبرو را وارد کنید" required/>
+                     placeholder="کد زیر را وارد کنید" autocomplete="off" required/>
           </div>
-          <div class="col-md-6 col-xs-6">
-              <img alt="captcha" style="width: 100%;" src="Libraries/Captcha/Captcha.php"/>
-          </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-8 col-xs-8">
+          <img class="captcha reload" alt="captcha" style="width: 100%;" src="Libraries/Captcha/Captcha.php"/>
+        </div>
+        <div class="col-md-4 col-xs-4">
+          <i class="fa fa-refresh reload" style="font-size: 22px;" aria-hidden="true"></i>
+        </div>
       </div>
       <div class="form-group">
         <div class="col-md-12">
@@ -73,6 +78,10 @@
         e.target.setCustomValidity("");
       };
     }
+
+      $('.reload').click(function() {
+          $('.captcha').attr("src", $('.captcha').attr('src'));
+      });
   })
   </script>
 
