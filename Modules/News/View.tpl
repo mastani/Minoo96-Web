@@ -11,7 +11,7 @@
                 <div class="content">
                     <img class="news_image" src="{$news.image}"/>
                     <br/>
-                    {$news.content}
+                    <p>{$news.content}</p>
                 </div>
             </div>
         {/foreach}

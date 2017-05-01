@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
 ?>
 
@@ -23,7 +23,6 @@ defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
             <li><a href="<?php echo getAddress(); ?>/Home">صفحه اصلی</a></li>
             <li><a href="<?php echo getAddress(); ?>/Home#Candidates">لیست نامزدها</a></li>
             <li><a href="<?php echo getAddress(); ?>/News">جدیدترین اخبار</a></li>
-            <li><a href="<?php echo getAddress(); ?>/Register">ثبت نام</a></li>
             <li><a href="<?php echo getAddress(); ?>/App">دانلود اپلیکیشن</a></li>
         </ul>
 
