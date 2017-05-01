@@ -1,4 +1,4 @@
-<div class="container">
+﻿<div class="container">
     <br/><br/>
 
     <div class="row">
@@ -39,14 +39,14 @@
             {foreach from=$posts item=post}
                 <div class="post">
                     <div class="separator"></div>
-                    <div class="content c-shadow">
+                    <div class="content c-shadow pad-bot">
                         <img class="news_image" src="{$post.image}"/>
-                        <p>{$post.content}</p>
+                        <p class="st-cont">{$post.content}</p>
                         <br/>
-                        <p><a class="like-comment" data-id="{$post.id}">{$post.likes} لایک و {$post.comments} کامنت</a>
+                        <p><a class="like-comment" data-id="{$post.id}"><img src="../Theme/Images/like.png" class="like-post"/>{$post.likes} لایک<img src="../Theme/Images/comment.png" class="cm-post"/> {$post.comments} کامنت</a>
                         </p>
                         <p class="comments-area-{$post.id}"></p>
-                        <p>ارسال شده در {$post.time}</p>
+                        <p class="time-back"><img src="../Theme/Images/time.png" class="time-post"/>ارسال شده در {$post.time}</p>
                     </div>
                 </div>
                 <br/>
@@ -68,10 +68,10 @@
                     var json = JSON.parse(data);
                     var comments = json.comments;
                     $.each(comments, function (i, item) {
-                        html += "<p>نظر " + item.name +
+                        html += "<div class='cm-back'><p>نظر " + item.name +
                                 " ثبت شده در " + item.time +
                                 "<br/>" + item.content +
-                                "</p>";
+                                "</p></div>";
                     });
                     $(".comments-area-" + pid).html(html);
                 });
