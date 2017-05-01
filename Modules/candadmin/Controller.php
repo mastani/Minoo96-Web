@@ -5,14 +5,14 @@ class Controller extends BaseController
 
     public function index()
     {
-        if ($this->hasPermission('user')) {
-            $this->smarty->assign('logged_in_cand', true);
-        }
-
-        if (isset($_POST['login']))
+        if (isset($_POST['login']) && !isset($_SESSION['user_id']))
             $this->Login();
 
-        parent::render();
+        if(isset($_SESSION['user_id']) && $_SESSION['user_id']>0)//if user logged in
+            $this->dashboard();
+        else
+            parent::render('View');
+
     }
 
     public function Login()

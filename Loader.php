@@ -39,7 +39,7 @@ switch ($page) {
             $command = $path[2];
         }
         break;
-    // In canadmin module 1nd index is command
+    // In canadmin and administrator module 1st index is command
     case 'candadmin':
         if (isset($path[1]) && !empty($path[1])) {
             $command = 'dashboard';
@@ -68,8 +68,11 @@ require "Modules/$page/Controller.php";
 
 $controller = new Controller();
 
-require 'Theme/Header.php';
-require 'Theme/Body.php';
-require 'Theme/Footer.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+if ($page !== 'Administrator'){
+    require 'Theme/Header.php';
+    require 'Theme/Body.php';
+    require 'Theme/Footer.php';
+}
+else
+    $controller->$command();
+
