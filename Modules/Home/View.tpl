@@ -1,4 +1,4 @@
-﻿<div class="container" id="Candidates">
+<div class="container" id="Candidates">
 
     <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h3 class="gallery-title"><img src="../Theme/Images/list.png"/> لیست نامزدهای انتخاباتی شهرستان مینودشت در سال 96</h3>
