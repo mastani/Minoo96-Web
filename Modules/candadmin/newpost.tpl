@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="body" class="col-sm-2 control-label">متن پست</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="4" name="body" value="{$smarty.post.body}" required ></textarea>
+                <textarea class="form-control" rows="4" name="body" required >{$smarty.post.body}</textarea>
             </div>
         </div>
         <div class="form-group">
