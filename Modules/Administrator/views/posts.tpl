@@ -20,7 +20,7 @@
                         <th>ID</th>
                         <th>نام کاندید</th>
                         <th>وضعیت</th>
-                        <th>عنوان</th>
+                        <th>متن</th>
                         <th>تاریخ</th>
                     </tr>
                     {foreach $posts as $post}
@@ -35,7 +35,7 @@
                                  {elseif (($post.approved_id > 0))}{* approved *}
                                      <span class="label label-success">تایید شده</span></td>
                             {/if}
-                            <td><a data-toggle="modal" class="btn btn-link" id="{$post.id}">{$post.title}</a></td>
+                            <td><a data-toggle="modal" class="btn btn-link" id="{$post.id}">{$post.content}</a></td>
                             <td>{$post.time}</td>
                         </tr>
                     {/foreach}
@@ -111,7 +111,6 @@
     });
     function setModal(msg){
         post = JSON.parse(msg);
-       $('#posttitle').text(post.title);
        $('#postbody').text(post.content);
        $('#myModal').modal('show');
     }
@@ -124,7 +123,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="posttitle"></h4>
             </div>
             <div class="modal-body" id="postbody"></div>
             <div class="modal-footer">

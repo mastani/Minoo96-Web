@@ -123,7 +123,7 @@
                     </tr>
                     {foreach $posts_top as $post}
                         <tr>
-                            <td>{$post.title}</td>
+                            <td>{$post.content}</td>
                             <td>
                                 {if ($post.approved_id == 0)}{*pending*}
                                 <span class="label label-warning">انتظار</span></td>
@@ -148,9 +148,6 @@
             <div class="box-body table-responsive no-padding">{*show comments*}
                 <table class="table table-hover">
                     <tbody>
-                    <tr>
-                        <th>متن</th>
-                    </tr>
                     {foreach $news_top as $news}
                         <tr>
                             <td>{$news.title}</td>

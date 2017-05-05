@@ -85,7 +85,7 @@
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
                                     {for $i=1 to 5}
-                                        <li><a href="">{$posts_top[$i].title}</a></li>
+                                        <li><a href="">{$posts_top[$i].content}</a></li>
                                     {/for}
                                 </ul>
                             </li>
