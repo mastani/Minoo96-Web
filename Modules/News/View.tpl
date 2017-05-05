@@ -5,13 +5,12 @@
                 <div class="title">
                     <span class="fa fa-newspaper-o"></span>
                     {$news.title}
-                    <span class="time">{$news.time}</span>
+                    <span class="time1">{$news.time}</span>
                 </div>
                 <div class="separator"></div>
-                <div class="content">
-                    <img class="news_image" src="{$news.image}"/>
-                    <br/>
-                    <p>{$news.content}</p>
+                <div class="content1">
+                    <img class="news_image1" src="{$news.image}"/>
+                    <p class="full-post">{$news.content}</p>
                 </div>
             </div>
         {/foreach}

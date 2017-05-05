@@ -1,10 +1,6 @@
-﻿<?php
+<?php
 defined('ACCESS') or die(header('HTTP/1.1 403 Forbidden'));
 ?>
-
-<!--
-<img class="header-images" src="<?php echo getAddress(); ?>/Theme/Images/header2.jpg" width="1250">
--->
 
 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="navbar-header">
