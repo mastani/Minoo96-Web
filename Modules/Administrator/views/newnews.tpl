@@ -1,9 +1,5 @@
 {if isset($msg)}
-    <div class="alert alert-info" id="message"><ul>
-            {foreach $msg as $message}
-                <li>{$message}</li>
-            {/foreach}
-        </ul></div>
+    <div class="alert alert-info" id="message">{$msg}</div>
 {/if}
 <form id="form" method="post" action="" class="form form-horizontal col-md-12" enctype="multipart/form-data">
     <h2>خبر جدید</h2>

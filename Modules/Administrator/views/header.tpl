@@ -41,93 +41,70 @@
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">نمایش منو</span>
             </a>
+
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <i class="fa fa-comments"></i>
+                            <span class="label label-warning" id="commentcount">{$comment_count}</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
+                            {if ($comment_count>0)}
+                                <li class="header">شما {$comment_count} کامنت تایید نشده دارید</li>
+                            {/if}
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-right">
-                                                <img src="{$smarty.const.DEFAULT_PATH}/Modules/Administrator/images/masoud.jpg" class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
+                                    {for $i=1 to 5}
+                                        <li><a href="">{$comments_top[$i].content}</a></li>
+                                    {/for}
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
+                            <li class="footer"><a href="{$smarty.const.DEFAULT_PATH}/Administrator/comments">مشاهده همه
+                                    کامنت ها</a></li>
                         </ul>
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">۱۰</span>
+                            <i class="fa fa-clone"></i>
+                            {if ($post_count>0)}
+                                <span class="label label-warning" id="postscount">{$post_count}</span>
+                            {/if}
+
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            {if ($post_count>0)}
+                                <li class="header">شما {$post_count}پست تایید نشده دارید</li>
+                            {/if}
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
+                                    {for $i=1 to 5}
+                                        <li><a href="">{$posts_top[$i].title}</a></li>
+                                    {/for}
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">View all</a></li>
+                            <li class="footer"><a href="{$smarty.const.DEFAULT_PATH}/Administrator/posts">مشاهده همه
+                                    پست ها</a></li>
                         </ul>
                     </li>
                     <!-- Tasks: style can be found in dropdown.less -->
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">۹</span>
+                            <i class="fa fa-user"></i>
+                            <span class="label label-danger">0</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-left">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
+                        <ul class="dropdown-menu"></ul>
                     </li>
                     <!-- User Account: style can be found in dropdown.less -->
                     <!-- Control Sidebar Toggle Button -->
-                    <li><a type="button" class="btn btn-danger btn-flat" href="{$smarty.const.DEFAULT_PATH}/?logout">خروج</a></li>
+                    <li><a type="button" class="btn btn-danger btn-flat" href="{$smarty.const.DEFAULT_PATH}/?logout">خروج</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -139,7 +116,8 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-right image">
-                    <img src="{$smarty.const.DEFAULT_PATH}/Modules/Administrator/images/masoud.jpg" class="img-circle" alt="User Image">
+                    <img src="{$smarty.const.DEFAULT_PATH}/Modules/Administrator/images/{$admin.id}.jpg" class="img-circle"
+                         alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>{$admin.name} {$admin.last_name}</p>
@@ -149,9 +127,10 @@
             <!-- search form -->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="جستوجو ...">
+                    <input type="text" name="q" class="form-control" placeholder="جستجو ...">
                     <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                          class="fa fa-search"></i></button>
             </span>
                 </div>
             </form>
@@ -159,28 +138,32 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">ناوبری اصلی</li>
-                <li class="active treeview">
-                    <a href="{$smarty.const.DEFAULT_PATH}/Administrator">
+                <li class="{if ($url == 'dashboard')}active{/if}">
+                    <a href="{$smarty.const.DEFAULT_PATH}/Administrator/dashboard">
                         <i class="fa fa-dashboard"></i> <span>پیشخوان</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
-                <li>
+                <li class="{if ($url == 'comments')}active{/if}">
                     <a href="{$smarty.const.DEFAULT_PATH}/Administrator/comments">
                         <i class="fa fa-comments"></i> <span>کامنت ها</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
-                <li>
+                <li class="{if ($url == 'posts')}active{/if}">
                     <a href="{$smarty.const.DEFAULT_PATH}/Administrator/posts">
                         <i class="fa fa-clone"></i> <span>پست ها</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
-                <li class="treeview">
+                <li class="treeview {if ($url == 'newnews' || $url == 'newslist')}active{/if}">
                     <a href="#">
                         <i class="fa fa-newspaper-o"></i> <span>اخبار</span> <i class="fa fa-angle-left pull-left"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{$smarty.const.DEFAULT_PATH}/Administrator/newnews"><i class="fa fa-list-alt"></i>خبر جدید</a></li>
-                        <li><a href="{$smarty.const.DEFAULT_PATH}/Administrator/newslist"><i class="fa fa-list"></i> لیست خبرها</a></li>
+                        <li {if ($url == 'newnews')} class="active" {/if}><a
+                                    href="{$smarty.const.DEFAULT_PATH}/Administrator/newnews"><i
+                                        class="fa fa-list-alt"></i>خبر جدید</a></li>
+                        <li {if ($url == 'newslist')} class=" active" {/if}><a
+                                    href="{$smarty.const.DEFAULT_PATH}/Administrator/newslist"><i
+                                        class="fa fa-list"></i> لیست خبرها</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -188,17 +171,19 @@
                         <i class="fa fa-user"></i> <span>نامزدها</span> <i class="fa fa-angle-left pull-left"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{$smarty.const.DEFAULT_PATH}/Administrator/newcandidate"><i class="fa fa-user-plus"></i>نامزد جدید</a></li>
-                        <li><a href="{$smarty.const.DEFAULT_PATH}/Administrator/candidates"><i class="fa fa-users"></i> اصلاح اطلاعات نامزدها</a></li>
+                        <li class="active"><a href="#"><i
+                                        class="fa fa-user-plus"></i>نامزد جدید</a></li>
+                        <li><a href="#"><i class="fa fa-users"></i>
+                                اصلاح اطلاعات نامزدها</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{$smarty.const.DEFAULT_PATH}/Administrator/setting">
+                    <a href="#">
                         <i class="fa fa-cogs"></i> <span>تنظیمات برنامه</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="{$smarty.const.DEFAULT_PATH}/Administrator/dashboard/changepass">
+                    <a href="#">
                         <i class="fa fa-lock"></i> <span>تغییر کلمه عبور</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
@@ -212,14 +197,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                پیشخوان
+            <h1> پیشخوان
                 <small>پنل مدیریت</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> خانه</a></li>
-                <li class="active">پیشخوان</li>
-            </ol>
         </section>
 
         <!-- Main content -->

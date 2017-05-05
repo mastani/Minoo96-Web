@@ -54,6 +54,7 @@
                         {/foreach}
                         </tbody>
                         <tfooter>
+                            {if ($pages>1)}
                             <td>
                                    <ul class="pagination">
                                        {if ($activepage == 1)}
@@ -77,10 +78,9 @@
                                        {else}
                                            <li class="page-item"><a class="page-link" href="{$smarty.const.DEFAULT_PATH}/Administrator/comments/{$activepage+1}">بعدی</a></li>
                                        {/if}
-
-
                                    </ul>
                             </td>
+                            {/if}
                             <td>
                                 <input style="margin-top: 20px" name="submit" type="submit" value="ذخیره تغییرات" class="btn btn-block btn-primary">
                             </td>

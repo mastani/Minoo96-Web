@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">پست ها</h3>
+                <h3 class="box-title">پست ها<small>(برای دیدین محتوای پست روی عنوان آن کلیک کنید)</small></h3>
                 <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control input-sm pull-right"

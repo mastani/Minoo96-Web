@@ -1,0 +1,7 @@
+.sidebar-menu .treeview-menu>li>a {
+	padding: 5px 35px 5px 5px;
+}
+.users-list > li {
+	width: 10%;
+	float: right;
+}
