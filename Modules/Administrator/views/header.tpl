@@ -182,8 +182,8 @@
                         <i class="fa fa-cogs"></i> <span>تنظیمات برنامه</span> <i class="fa pull-left"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li class="{if ($url == 'changepass')}active{/if}">
+                    <a href="{$smarty.const.DEFAULT_PATH}/Administrator/changepass">
                         <i class="fa fa-lock"></i> <span>تغییر کلمه عبور</span> <i class="fa pull-left"></i>
                     </a>
                 </li>

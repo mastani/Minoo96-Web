@@ -19,7 +19,7 @@ class Model extends BaseModel {
     {
         $start = ($page-1)*10;
         $end = $page*10;
-        return $this->query('SELECT p.id as id,c.name,title,p.time,approved_id FROM posts p
+        return $this->query('SELECT p.id as id,c.name,content,p.time,approved_id FROM posts p
           inner join candidates c on p.candidate_id=c.id ORDER BY time DESC 
             LIMIT ?,? ', array('ss', $start,$end));
     }
@@ -118,6 +118,15 @@ class Model extends BaseModel {
     public function getCandidates()
     {
         return $this->query('select * from candidates');
+    }
+
+    public function changePass($oldpass,$newpass,$userid)
+    {
+        $newpass = sha1($newpass);
+        $oldpass = sha1($oldpass);
+
+        return $this->query('update users set password = ? where id = ? and password = ?',array('sss',$newpass, $userid, $oldpass), true);
+
     }
 
 

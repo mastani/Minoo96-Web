@@ -363,4 +363,26 @@ class Controller extends BaseController
         parent::render();
 
     }
+
+    public function changepass()
+    {
+        $this->admininfo();
+        if (isset($_POST['newpass1'])) {//save setting
+            if (strlen($_POST['newpass1'])<4)
+                $msg[0] = 'کلمه عبور باید شامل حداقل ۴ کاراکتر باشد';
+            if (($_POST['newpass1']) != ($_POST['newpass2']))
+                $msg = 'کلمه عبور جدید و تکرار آن برابر نیستند';
+
+            if (!isset($msg))//insert new post
+            {
+                if ($this->model->changePass($_POST['oldpass'], $_POST['newpass1'],$this->session->get('user_id')))
+                    $msg = 'تغییرات با موفقیت ذخیره شد';
+                else
+                    $msg = 'مشکل در ذخیره سازی تغییرات';
+            }
+            $this->smarty->assign('msg', $msg);
+        }
+
+        parent::render();
+    }
 }
