@@ -186,7 +186,7 @@ class Controller extends BaseController
                 $uploadOk = 1;
                 $file_name = '';
 
-                if (!empty($_FILES["image"])){
+                if (!empty($_FILES["image"]['name'])){
                     //check image
                     $target_dir = dirname(dirname(__dir__))."/images/";
                     $file_name = md5($this->session->get('user_id').date('Y-m-d H:i:s'));
@@ -229,7 +229,7 @@ class Controller extends BaseController
 
 
                 $this->smarty->assign('msg', $msg);
-            
+
             }
         }
         else{

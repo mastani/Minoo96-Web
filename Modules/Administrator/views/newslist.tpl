@@ -1,12 +1,15 @@
 <script type="text/javascript" src="{$smarty.const.DEFAULT_PATH}/Theme/JS/jquery.confirm.min.js"></script>
+{if isset($msg)}
+    <div class="alert alert-info" id="message">{$msg}</div>
+{/if}
 <div class="panel panel-default panel-table">
     <div class="panel-heading">
         <div class="row">
             <div class="col col-xs-6">
-                <h3 class="panel-title">پست های ارسال شده</h3>
+                <h3 class="panel-title">خبر های ارسال شده</h3>
             </div>
             <div class="col col-xs-6 text-left">
-                <a class="btn btn-sm btn-primary btn-create" href="{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/new">ارسال پست جدید</a>
+                <a class="btn btn-sm btn-primary btn-create" href="{$smarty.const.DEFAULT_PATH}/Administrator/newnews">ارسال خبر جدید</a>
             </div>
         </div>
     </div>
@@ -20,7 +23,7 @@
             </tr>
             </thead>
             <tbody>
-            {foreach from=$posts item=v}
+            {foreach from=$news item=v}
                 <tr>
                     <td>{$v.title}</td>
                     <td>{$v.time}</td>
@@ -31,12 +34,41 @@
                 </tr>
             {/foreach}
             </tbody>
+            {if ($pages>1)}
+            <tfooter>
+                <td>
+                    <ul class="pagination">
+                        {if ($activepage == 1)}
+                            <li class="page-item disabled"><a class="page-link" href="#">قبلی</a></li>
+                        {else}
+                            <li class="page-item"><a class="page-link" href="{$smarty.const.DEFAULT_PATH}/Administrator/newslist/{$activepage-1}">قبلی</a></li>
+                        {/if}
+
+                        {for $i=1 to $pages}
+                            {if ($activepage == $i)}
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">{$i} <span class="sr-only">(current)</span></a>
+                                </li>
+                            {else}
+                                <li class="page-item"><a class="page-link" href="{$smarty.const.DEFAULT_PATH}/Administrator/newslist/{$i}">{$i}</a></li>
+                            {/if}
+                        {/for}
+
+                        {if ($activepage == $pages)}
+                            <li class="page-item disabled"><a class="page-link" href="#">قبلی</a></li>
+                        {else}
+                            <li class="page-item"><a class="page-link" href="{$smarty.const.DEFAULT_PATH}/Administrator/newslist/{$activepage+1}">بعدی</a></li>
+                        {/if}
+                    </ul>
+                </td>
+            </tfooter>
+            {/if}
         </table>
 
     </div>
 </div>
 <form method="post" action="" id="form1">
-    <input type="hidden" name="postid" id="postid" value="">
+    <input type="hidden" name="newsid" id="postid" value="">
 </form>
 <script type="text/javascript">
     $(".confirm").confirm({
@@ -62,9 +94,10 @@
     function sendpostid(operation, id) {
 
         if(operation == 'edit') {
-            $('#form1').attr('action', '{$smarty.const.DEFAULT_PATH}/candadmin/dashboard/edit');
+            $('#form1').attr('action', '{$smarty.const.DEFAULT_PATH}/Administrator/editnews');
             $('#postid').val(id);
         }
         $('#form1').submit();
     }
+
 </script>
